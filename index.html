@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔬 Quiz Ciências 6º Ano - Aventura Científica</title>
+    <title>🔬 Quiz Ciências 6º Ano - Aventura Espacial</title>
     <style>
         * {
             margin: 0;
@@ -17,10 +17,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #FFE5B4, #FFB6C1, #B0E0E6, #98FB98);
+            background: linear-gradient(135deg, #0B1E3F, #1E3A8A, #2563EB, #3B82F6, #60A5FA);
             background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            animation: gradientBG 15s ease infinite;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
         }
 
         @keyframes gradientBG {
@@ -29,44 +31,234 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* ============ DECORAÇÃO DE PLANETAS ============ */
+        .planetas-decoracao {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .planeta {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: inset -8px -8px 20px rgba(0,0,0,0.6), 0 0 30px rgba(96, 165, 250, 0.5);
+        }
+
+        /* Sol */
+        .sol {
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle at 30% 30%, #FFEB99, #FFA500, #FF6347);
+            top: 3%;
+            right: 5%;
+            box-shadow: 0 0 60px #FFA500, 0 0 100px #FF6347;
+            animation: pulsar 4s ease-in-out infinite;
+        }
+
+        @keyframes pulsar {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 60px #FFA500, 0 0 100px #FF6347; }
+            50% { transform: scale(1.1); box-shadow: 0 0 80px #FFA500, 0 0 130px #FF6347; }
+        }
+
+        /* Mercúrio */
+        .mercurio {
+            width: 22px;
+            height: 22px;
+            background: radial-gradient(circle at 30% 30%, #C0C0C0, #708090);
+            top: 12%;
+            left: 6%;
+            animation: flutuar 6s ease-in-out infinite;
+        }
+
+        /* Vênus */
+        .venus {
+            width: 34px;
+            height: 34px;
+            background: radial-gradient(circle at 30% 30%, #FFE4B5, #DEB887, #B8860B);
+            top: 25%;
+            right: 8%;
+            animation: flutuar 7s ease-in-out infinite 1s;
+        }
+
+        /* Terra */
+        .terra {
+            width: 42px;
+            height: 42px;
+            background: radial-gradient(circle at 30% 30%, #87CEEB, #4682B4, #1E3A8A);
+            bottom: 15%;
+            left: 4%;
+            box-shadow: inset -6px -6px 15px rgba(0,0,0,0.5), 0 0 25px #3B82F6;
+            animation: flutuar 8s ease-in-out infinite 0.5s;
+            position: relative;
+        }
+
+        .terra::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 60% 40%, #228B22 15%, transparent 16%),
+                        radial-gradient(circle at 30% 65%, #228B22 12%, transparent 13%);
+            top: 0; left: 0;
+        }
+
+        /* Marte */
+        .marte {
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, #E9967A, #CD5C5C, #8B0000);
+            bottom: 25%;
+            right: 10%;
+            animation: flutuar 6.5s ease-in-out infinite 0.8s;
+        }
+
+        /* Júpiter */
+        .jupiter {
+            width: 58px;
+            height: 58px;
+            background: radial-gradient(circle at 30% 30%, #F5DEB3, #D2B48C, #8B4513);
+            top: 55%;
+            left: 3%;
+            animation: flutuar 9s ease-in-out infinite 1.2s;
+            position: relative;
+        }
+
+        .jupiter::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: rgba(139, 69, 19, 0.4);
+            top: 35%;
+            border-radius: 50%;
+        }
+
+        /* Saturno com anel */
+        .saturno {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #F5DEB3, #DEB887, #A0522D);
+            top: 8%;
+            left: 45%;
+            animation: flutuar 10s ease-in-out infinite 0.3s;
+            position: relative;
+        }
+
+        .saturno::before {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 15px;
+            border: 3px solid rgba(245, 222, 179, 0.7);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-20deg);
+            box-shadow: 0 0 10px rgba(245, 222, 179, 0.5);
+        }
+
+        /* Urano */
+        .urano {
+            width: 36px;
+            height: 36px;
+            background: radial-gradient(circle at 30% 30%, #B0E0E6, #87CEEB, #4682B4);
+            bottom: 8%;
+            right: 25%;
+            animation: flutuar 7.5s ease-in-out infinite 1.5s;
+        }
+
+        /* Netuno */
+        .netuno {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #6495ED, #4169E1, #000080);
+            top: 70%;
+            right: 4%;
+            animation: flutuar 8.5s ease-in-out infinite 0.7s;
+        }
+
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-15px) translateX(8px); }
+            50% { transform: translateY(-25px) translateX(0); }
+            75% { transform: translateY(-15px) translateX(-8px); }
+        }
+
+        /* Estrelas */
+        .estrelas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .estrela {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 6px white, 0 0 12px #60A5FA;
+            animation: cintilar 3s ease-in-out infinite;
+        }
+
+        @keyframes cintilar {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* ============ GAME CONTAINER ============ */
         .game-container {
             width: 100%;
             max-width: 750px;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(240, 248, 255, 0.95);
             border-radius: 50px;
             padding: 35px 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 0 8px #FFD700, 0 0 0 12px #FFA500;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 0 8px #3B82F6, 
+                        0 0 0 12px #1E3A8A,
+                        0 0 60px rgba(96, 165, 250, 0.6);
             backdrop-filter: blur(5px);
             transition: all 0.3s;
             position: relative;
+            z-index: 1;
             overflow: hidden;
         }
 
         .game-container::before {
-            content: "🧪🔬🧬";
+            content: "🪐🌍🌟";
             position: absolute;
             top: -10px;
             left: 20px;
             font-size: 30px;
-            opacity: 0.3;
+            opacity: 0.4;
             transform: rotate(-10deg);
         }
 
         .game-container::after {
-            content: "🌱🦠🔭";
+            content: "🚀🔭🌙";
             position: absolute;
             bottom: -10px;
             right: 20px;
             font-size: 30px;
-            opacity: 0.3;
+            opacity: 0.4;
             transform: rotate(10deg);
         }
 
         h1 {
             text-align: center;
             font-size: 2.4rem;
-            color: #FF4500;
-            text-shadow: 4px 4px 0 #FFD700, 6px 6px 0 rgba(0,0,0,0.1);
+            color: #1E3A8A;
+            text-shadow: 3px 3px 0 #93C5FD, 5px 5px 0 rgba(30, 58, 138, 0.2);
             margin-bottom: 20px;
             letter-spacing: 2px;
             word-break: break-word;
@@ -96,12 +288,12 @@
 
         .welcome-box p {
             font-size: 1.3rem;
-            color: #2E8B57;
+            color: #1E40AF;
             margin: 15px 0;
-            background: #FFFACD;
+            background: #DBEAFE;
             padding: 15px;
             border-radius: 30px;
-            border: 3px dashed #FFA500;
+            border: 3px dashed #3B82F6;
         }
 
         .emoji-grande {
@@ -116,31 +308,32 @@
         }
 
         .btn {
-            background: linear-gradient(180deg, #FFD700, #FFA500);
+            background: linear-gradient(180deg, #60A5FA, #2563EB);
             border: none;
             border-radius: 60px;
             padding: 18px 40px;
             font-size: 1.5rem;
             font-weight: bold;
-            color: #4B0082;
+            color: #FFFFFF;
             cursor: pointer;
-            box-shadow: 0 8px 0 #B8860B, 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 0 #1E3A8A, 0 10px 20px rgba(0,0,0,0.3);
             transition: all 0.1s;
             margin: 12px 0;
             letter-spacing: 1px;
             text-transform: uppercase;
-            border: 2px solid #FFF8DC;
+            border: 2px solid #BFDBFE;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 0 #B8860B, 0 15px 25px rgba(0,0,0,0.2);
-            background: linear-gradient(180deg, #FFEC8B, #FFB347);
+            box-shadow: 0 10px 0 #1E3A8A, 0 15px 25px rgba(0,0,0,0.3);
+            background: linear-gradient(180deg, #93C5FD, #3B82F6);
         }
 
         .btn:active {
             transform: translateY(5px);
-            box-shadow: 0 3px 0 #B8860B, 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 0 #1E3A8A, 0 5px 15px rgba(0,0,0,0.3);
         }
 
         /* TELA PERGUNTAS */
@@ -150,30 +343,30 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            background: #FFE4B5;
+            background: #BFDBFE;
             padding: 10px 20px;
             border-radius: 40px;
-            border: 3px solid #FF8C00;
+            border: 3px solid #3B82F6;
         }
 
         .pergunta-numero {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #8B4513;
-            background: #FFF;
+            color: #1E3A8A;
+            background: #FFFFFF;
             padding: 5px 15px;
             border-radius: 30px;
-            border: 2px solid #FFA500;
+            border: 2px solid #60A5FA;
         }
 
         .pontuacao {
             font-size: 1.4rem;
             font-weight: bold;
-            color: #006400;
-            background: #FFF;
+            color: #1E40AF;
+            background: #FFFFFF;
             padding: 5px 20px;
             border-radius: 30px;
-            border: 2px solid #32CD32;
+            border: 2px solid #2563EB;
         }
 
         .pergunta-texto {
@@ -183,12 +376,12 @@
             margin: 25px 0 20px;
             line-height: 1.4;
             font-weight: bold;
-            background: #E0FFFF;
+            background: #E0F2FE;
             padding: 20px;
             border-radius: 30px;
-            border: 4px solid #00CED1;
+            border: 4px solid #38BDF8;
             width: 100%;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+            box-shadow: inset 0 0 15px rgba(30, 58, 138, 0.1);
         }
 
         .opcoes-container {
@@ -200,35 +393,35 @@
         }
 
         .opcao {
-            background: #F0F8FF;
-            border: 4px solid #87CEEB;
+            background: #EFF6FF;
+            border: 4px solid #93C5FD;
             border-radius: 50px;
             padding: 16px 25px;
             font-size: 1.3rem;
-            color: #2C3E50;
+            color: #1E3A8A;
             cursor: pointer;
             transition: all 0.2s;
             text-align: left;
             font-weight: bold;
-            box-shadow: 0 5px 0 #4682B4;
+            box-shadow: 0 5px 0 #3B82F6;
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
         .opcao:hover {
-            background: #E6F2FF;
+            background: #DBEAFE;
             transform: scale(1.02);
-            border-color: #1E90FF;
+            border-color: #2563EB;
         }
 
         .opcao:active {
             transform: translateY(3px);
-            box-shadow: 0 2px 0 #4682B4;
+            box-shadow: 0 2px 0 #3B82F6;
         }
 
         .opcao .letra {
-            background: #1E90FF;
+            background: #2563EB;
             color: white;
             width: 40px;
             height: 40px;
@@ -239,6 +432,7 @@
             font-size: 1.3rem;
             font-weight: bold;
             flex-shrink: 0;
+            box-shadow: 0 3px 0 #1E3A8A;
         }
 
         .opcao.correta {
@@ -302,30 +496,30 @@
 
         .resultado-texto {
             font-size: 2rem;
-            color: #4B0082;
+            color: #1E3A8A;
             margin: 10px 0;
         }
 
         .pontuacao-final {
             font-size: 3rem;
-            color: #FF4500;
+            color: #1E40AF;
             font-weight: bold;
-            background: #FFFACD;
+            background: #DBEAFE;
             display: inline-block;
             padding: 15px 40px;
             border-radius: 60px;
-            border: 5px solid #FFD700;
+            border: 5px solid #3B82F6;
             margin: 15px 0;
-            box-shadow: 0 8px 0 #DAA520;
+            box-shadow: 0 8px 0 #1E3A8A;
         }
 
         .mensagem-final {
             font-size: 1.4rem;
-            color: #006400;
-            background: #E8F5E9;
+            color: #1E40AF;
+            background: #EFF6FF;
             padding: 20px;
             border-radius: 30px;
-            border: 3px dashed #4CAF50;
+            border: 3px dashed #3B82F6;
             margin: 20px 0;
         }
 
@@ -343,20 +537,49 @@
             .pontuacao-final { font-size: 2.2rem; padding: 10px 25px; }
             .resultado-emoji { font-size: 4rem; }
             .feedback { font-size: 1.2rem; }
+            
+            /* Planetas menores no celular */
+            .sol { width: 60px; height: 60px; }
+            .jupiter { width: 40px; height: 40px; }
+            .saturno { width: 35px; height: 35px; }
+            .saturno::before { width: 60px; height: 10px; }
+            .terra { width: 30px; height: 30px; }
+            .netuno { width: 28px; height: 28px; }
+            .urano { width: 26px; height: 26px; }
+            .venus { width: 24px; height: 24px; }
+            .marte { width: 20px; height: 20px; }
+            .mercurio { width: 16px; height: 16px; }
         }
     </style>
 </head>
 <body>
 
+<!-- ============ DECORAÇÃO DE PLANETAS ============ -->
+<div class="planetas-decoracao">
+    <div class="planeta sol"></div>
+    <div class="planeta mercurio"></div>
+    <div class="planeta venus"></div>
+    <div class="planeta terra"></div>
+    <div class="planeta marte"></div>
+    <div class="planeta jupiter"></div>
+    <div class="planeta saturno"></div>
+    <div class="planeta urano"></div>
+    <div class="planeta netuno"></div>
+</div>
+
+<!-- ============ ESTRELAS CINTILANTES ============ -->
+<div class="estrelas" id="estrelas"></div>
+
+<!-- ============ GAME CONTAINER ============ -->
 <div class="game-container">
-    <h1>🔬 AVENTURA CIENTÍFICA 🌍</h1>
+    <h1>🚀 AVENTURA CIENTÍFICA 🌌</h1>
 
     <!-- TELA INICIAL -->
     <div id="telaInicio" class="screen active">
         <div class="welcome-box">
-            <div class="emoji-grande">🧪🌟</div>
-            <p>Bem-vindo, pequeno cientista!<br>Teste seus conhecimentos de Ciências do 6º ano!</p>
-            <p style="font-size:1rem; background:#FFE4E1;">🌱 Serão 10 perguntas sobre seres vivos, água, ar e muito mais!</p>
+            <div class="emoji-grande">🪐🌟</div>
+            <p>Bem-vindo, pequeno astronauta!<br>Teste seus conhecimentos de Ciências do 6º ano!</p>
+            <p style="font-size:1rem; background:#DBEAFE;">🌍 Serão 10 perguntas sobre seres vivos, água, ar e muito mais!</p>
             <button class="btn" onclick="iniciarJogo()">▶ COMEÇAR</button>
         </div>
     </div>
@@ -390,7 +613,7 @@
         {
             pergunta: "Qual é o principal gás que os seres humanos precisam respirar para viver?",
             opcoes: ["Gás Carbônico", "Oxigênio", "Nitrogênio", "Hélio"],
-            correta: 1 // índice do array
+            correta: 1
         },
         {
             pergunta: "Qual é o maior planeta do Sistema Solar?",
@@ -442,7 +665,7 @@
     // ==================== VARIÁVEIS DE ESTADO ====================
     let perguntaAtual = 0;
     let pontuacao = 0;
-    let respondeu = false; // controla se já respondeu a pergunta atual
+    let respondeu = false;
 
     // ==================== ELEMENTOS DO DOM ====================
     const telaInicio = document.getElementById('telaInicio');
@@ -476,13 +699,9 @@
         feedback.className = 'feedback';
         const q = perguntas[perguntaAtual];
 
-        // Atualiza cabeçalho
         numeroPergunta.textContent = `${perguntaAtual + 1}/${perguntas.length}`;
-
-        // Atualiza texto da pergunta
         perguntaTexto.textContent = q.pergunta;
 
-        // Limpa e cria opções
         opcoesContainer.innerHTML = '';
         const letras = ['A', 'B', 'C', 'D'];
 
@@ -503,16 +722,12 @@
         const todasOpcoes = document.querySelectorAll('.opcao');
         const acertou = (indiceSelecionado === q.correta);
 
-        // Desabilita todas as opções
         todasOpcoes.forEach(op => op.classList.add('desabilitada'));
-
-        // Marca a correta e a errada (se for o caso)
         todasOpcoes[q.correta].classList.add('correta');
         if (!acertou) {
             elementoClicado.classList.add('errada');
         }
 
-        // Atualiza pontuação
         if (acertou) {
             pontuacao++;
             feedback.textContent = '✅ Muito bem! Você acertou! 🎉';
@@ -523,7 +738,6 @@
         }
         atualizarPontuacao();
 
-        // Avança para próxima pergunta após 2 segundos
         setTimeout(() => {
             perguntaAtual++;
             if (perguntaAtual < perguntas.length) {
@@ -545,7 +759,6 @@
         const total = perguntas.length;
         pontuacaoFinal.textContent = `${pontuacao}/${total}`;
 
-        // Mensagem e emoji baseados na pontuação
         if (pontuacao === total) {
             resultadoEmoji.textContent = '🏆🌟';
             mensagemFinal.textContent = 'PERFEITO! Você é um gênio da ciência! Parabéns!';
@@ -566,9 +779,27 @@
         iniciarJogo();
     }
 
+    // ==================== GERADOR DE ESTRELAS ====================
+    function criarEstrelas() {
+        const container = document.getElementById('estrelas');
+        const numEstrelas = 80;
+        for (let i = 0; i < numEstrelas; i++) {
+            const estrela = document.createElement('div');
+            estrela.classList.add('estrela');
+            estrela.style.left = Math.random() * 100 + '%';
+            estrela.style.top = Math.random() * 100 + '%';
+            estrela.style.animationDelay = Math.random() * 3 + 's';
+            estrela.style.animationDuration = (2 + Math.random() * 3) + 's';
+            const tamanho = 1 + Math.random() * 3;
+            estrela.style.width = tamanho + 'px';
+            estrela.style.height = tamanho + 'px';
+            container.appendChild(estrela);
+        }
+    }
+
     // ==================== INICIALIZAÇÃO ====================
-    // Garante que a tela inicial está ativa ao carregar
     window.onload = () => {
+        criarEstrelas();
         telaInicio.classList.add('active');
         telaQuiz.classList.remove('active');
         telaFinal.classList.remove('active');
